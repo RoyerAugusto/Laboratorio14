@@ -1,19 +1,17 @@
+
 package com.example.laboratorio14
 
 import android.content.Context
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
-import androidx.glance.Button
+import androidx.glance.background
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.provideContent
-import androidx.glance.layout.Alignment
 import androidx.glance.layout.Column
 import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.padding
 import androidx.glance.text.Text
-import android.content.Intent
-import androidx.glance.action.actionStartActivity
-import android.content.ComponentName
 
 class SimpleWidgetContent : GlanceAppWidget() {
 
@@ -22,23 +20,63 @@ class SimpleWidgetContent : GlanceAppWidget() {
         id: GlanceId
     ) {
         provideContent {
+
             Column(
                 modifier = GlanceModifier
                     .fillMaxSize()
-                    .padding(R.dimen.widget_padding),
-                verticalAlignment = Alignment.Vertical.CenterVertically,
-                horizontalAlignment = Alignment.Horizontal.CenterHorizontally
+                    .background(R.color.widget_background)
+                    .padding(R.dimen.widget_padding)
             ) {
-                Text(text = "¡Hola desde mi Widget!")
 
-                Text(text = "Mi primer widget con Jetpack Glance")
+                Column(
+                    modifier = GlanceModifier
+                        .fillMaxWidth()
+                        .background(R.color.widget_header)
+                        .padding(R.dimen.widget_padding)
+                ) {
+                    Text(text = "EL DESECHO")
+                    Text(text = "ESTADISTICAS DEL JUGADOR")
+                }
 
-                Button(
-                    text = "Abrir segunda vista",
-                    onClick = actionStartActivity(
-                        ComponentName(context, SecondActivity::class.java)
-                    )
-                )
+                Column(
+                    modifier = GlanceModifier
+                        .fillMaxWidth()
+                        .background(R.color.widget_card)
+                        .padding(R.dimen.widget_padding)
+                ) {
+                    Text(text = "CAPITULO ACTUAL")
+                    Text(text = "03 / 05")
+                }
+
+                Column(
+                    modifier = GlanceModifier
+                        .fillMaxWidth()
+                        .background(R.color.widget_deaths)
+                        .padding(R.dimen.widget_padding)
+                ) {
+                    Text(text = "MUERTES")
+                    Text(text = "08")
+                }
+
+                Column(
+                    modifier = GlanceModifier
+                        .fillMaxWidth()
+                        .background(R.color.widget_card)
+                        .padding(R.dimen.widget_padding)
+                ) {
+                    Text(text = "OBJETOS ENCONTRADOS")
+                    Text(text = "2 / 4")
+                }
+
+                Column(
+                    modifier = GlanceModifier
+                        .fillMaxWidth()
+                        .background(R.color.widget_card)
+                        .padding(R.dimen.widget_padding)
+                ) {
+                    Text(text = "PROGRESO DEL JUEGO")
+                    Text(text = "60 % COMPLETADO")
+                }
             }
         }
     }
